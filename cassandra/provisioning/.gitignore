@@ -1,6 +1,6 @@
 .idea
-*secrets.tf
-*.terraform
-*terraform.tfstate*
-*/tmp/*
+/secrets.tf
+/.terraform
+/terraform.tfstate*
+/tmp/*
 !*/tmp/.gitkeep
