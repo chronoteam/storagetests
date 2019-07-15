@@ -6,14 +6,19 @@
 * Add private key to ssh agent (`ssh-add path to key`)
 
 ## Structure
+### infrastructure
 * 1 dedicated VPC
 * 1 public subnet
 * 1 private subnet
 
+### machines
+* 1 bastion
+* x cassandra (seeds + nodes)
+
 ## Launch environment
 ```bash
 # cd to root project
-cd cassandra   
+cd cassandra/provisioning   
 cp secrets.tf.example secrets.tf 
   
 # complete with your AWS credentials into secretes.tf file   
@@ -33,13 +38,9 @@ sudo su
 /tmp/upload/install.sh
 
 # TODO - in progress!
-#     - wait until all minions send connection request
-#     - wait and retry until all grains set
-#     - after this step can be automated
-         
-salt '*' state.apply
+# after reduce number of machines will not work
 
-# create cassandra tables
+# create cassandra tables (run this inside provision machine)
 # TODO automate this
 /tmp/upload/create-cassandra-tables.sh
 
