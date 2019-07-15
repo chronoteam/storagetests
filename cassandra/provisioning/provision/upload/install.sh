@@ -51,3 +51,5 @@ sudo salt '*' mine.send grains.items
 sudo salt '*' mine.update
 
 echo -e "\e[1;31;42mSuccessful (re)init configuration \e[0m"
+
+sudo salt '*' state.apply

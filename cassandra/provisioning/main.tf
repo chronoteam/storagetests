@@ -332,6 +332,6 @@ resource "null_resource" "packer" {
 
   # upload resources number to salt master
   provisioner "local-exec" {
-    command = "scp -r ./tmp/count-resources ubuntu@$(cat tmp/provision-ip):/tmp"
+    command = "scp -r -o \"StrictHostKeyChecking no\" ./tmp/count-resources ubuntu@$(cat tmp/provision-ip):/tmp"
   }
 }
