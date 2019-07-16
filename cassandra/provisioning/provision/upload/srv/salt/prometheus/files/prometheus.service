@@ -1,0 +1,14 @@
+[Unit]
+Description=Prometheus Master
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=root
+ExecStart=/root/prometheus-2.5.0.linux-amd64/./prometheus --config.file=/root/prometheus-2.5.0.linux-amd64/prometheus.yml
+
+[Install]
+WantedBy=multi-user.target

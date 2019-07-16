@@ -1,0 +1,10 @@
+[
+  {
+    "labels": {
+      "hostname": "{{ hostname }}"
+    },
+    "targets": [
+      "{{ ipAddress }}:9100"
+    ]
+  }
+]
