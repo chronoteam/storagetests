@@ -119,6 +119,14 @@ resource "aws_security_group" "cqt-cassandra-public" {
     cidr_blocks =  ["10.0.2.0/24"]
   }
 
+  # TODO add gaphana -- for moment prometheus allow from outside
+  ingress {
+    from_port = 9090
+    to_port = 9090
+    protocol = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   ingress {
     from_port = -1
     to_port = -1
@@ -154,6 +162,14 @@ resource "aws_security_group" "cqt-cassandra-private"{
     from_port = -1
     to_port = -1
     protocol = "icmp"
+    cidr_blocks =  ["10.0.1.0/24"]
+  }
+
+  # allow prometheus scrapper
+  ingress {
+    from_port = 9100
+    to_port = 9100
+    protocol = "tcp"
     cidr_blocks =  ["10.0.1.0/24"]
   }
 
@@ -242,7 +258,7 @@ resource "aws_instance" "provision" {
   }
 }
 
-output "Bastion-Public-Ip" {
+output "Provision-Public-Ip" {
   value = aws_instance.provision.*.public_ip
 }
 
